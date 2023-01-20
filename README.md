@@ -36,6 +36,7 @@ Apart from this a sorting function was also addeded to sort student's name and a
 
 - In the Models folder, create a new class for the Student model. This class should have properties for the student's id, name, father's name, mother's name, age, address, registration date and a flag for soft delete.
 ```c#
+//Soft delete
 @page
 @using System.Data.SqlClient;
 @{
