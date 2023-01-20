@@ -35,6 +35,34 @@ Apart from this a sorting function was also addeded to sort student's name and a
 
 
 - In the Models folder, create a new class for the Student model. This class should have properties for the student's id, name, father's name, mother's name, age, address, registration date and a flag for soft delete.
+```c#
+@page
+@using System.Data.SqlClient;
+@{
+    try
+    {
+        String id = Request.Query["id"];
+
+        String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=STUDENTS;Integrated Security=True";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            String sql = "UPDATE clients SET IsDeleted = 1 WHERE id=@id";
+            using (SqlCommand command=new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+    }
+    Response.Redirect("/StudentsData/Index");
+}
+
+```
 - In the Models folder, create a new class that inherits from DbContext. This class will be used to interact with the database. Give it a DbSet for the Student model and create a constructor that accepts a DbContextOptions object.
 
 - In the appsettings.json file, add a new ConnectionStrings section and add the connection string for the SQL Server using SQLEXPRESS.
