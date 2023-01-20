@@ -36,7 +36,8 @@ Apart from this a sorting function was also addeded to sort student's name and a
 
 - In the Models folder, create a new class for the Student model. This class should have properties for the student's id, name, father's name, mother's name, age, address, registration date and a flag for soft delete.
 ```c#
-//Soft delete
+//Soft delete: "soft deletion," I added a new column to the table called "IsDeleted" with a default value of 0 (false).
+//Then, we would change the SQL query in the code to update the "IsDeleted" column to 1 (true) instead of deleting the row.
 @page
 @using System.Data.SqlClient;
 @{
