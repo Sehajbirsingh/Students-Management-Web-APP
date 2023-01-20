@@ -64,11 +64,11 @@ Apart from this a sorting function was also addeded to sort student's name and a
 }
 
 ```
-- In the Models folder, create a new class that inherits from DbContext. This class will be used to interact with the database. Give it a DbSet for the Student model and create a constructor that accepts a DbContextOptions object.
+- In the Models folder, create a new class that inherits from DbContext. This class will be used to interact with the database. Gave it a DbSet for the Student model and create a constructor that accepts a DbContextOptions object.
 
-- In the appsettings.json file, add a new ConnectionStrings section and add the connection string for the SQL Server using SQLEXPRESS.
+- In the appsettings.json file, added a new ConnectionStrings section and added the connection string for the SQL Server using SQLEXPRESS.
 
-- In the Startup.cs file, configure the DbContext to use the SQL Server connection string and enable CORS.
+- In the Startup.cs file, configured the DbContext to use the SQL Server connection string and enabled CORS in order to perform CRUD operations successfully.
 
 - In the Controllers folder, create a new controller for the Student. This controller should have methods for handling the different HTTP requests such as GET, POST
 ### SQL database 
@@ -100,5 +100,30 @@ VALUES
 ('Boris Johnson', 'boris.johnson@gmail.com', '+4499778855',
  '10 dowing street,London, England','kaku','chinky');
 ```
+
+### SCREENSHOT OF WORKING PROJECT
+ 1. Read only 
+ 
+  ![Read](https://user-images.githubusercontent.com/51527083/213648262-84848428-7c11-4266-955f-727a8883093b.png)
+ 
+ 2. Sorting the data by name and address(Home City)
+  
+  ![sort by name](https://user-images.githubusercontent.com/51527083/213648766-108e760a-8620-4000-ba74-16ec96acca6e.png)
+  
+  ![sort by address](https://user-images.githubusercontent.com/51527083/213648793-8ad7b8e6-c0b9-495f-bc1d-4bccee382ed3.png)
+ 
+ 3. Creating New Student 
+ 
+ ![creating new student](https://user-images.githubusercontent.com/51527083/213648361-29669334-0bd1-4753-944c-525410a98f0b.png)
+ 
+ After Submitting we can see the added student comes at last position with new 
+  
+  id number i.e. 7 with different timestamp as well
+  ![after creating](https://user-images.githubusercontent.com/51527083/213648597-987a96f9-f4e2-440d-b2b4-aab56f1bc483.png)
+
+4. On deleting the latest entry i.e. id=7
+  
+  ![soft delete](https://user-images.githubusercontent.com/51527083/213648921-b1327308-56fa-4626-b981-0948c64ac2de.png)
+
 
 
