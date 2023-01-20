@@ -1,0 +1,72 @@
+﻿@page
+@model Students.Pages.StudentsData.IndexModel
+@{
+}
+<br>
+<h2>List of Students</h2>
+<a class='btn btn alert-primary btn-sm' href='/StudentsData/Create'>New Student</a>
+<label for="sort">Sort By:</label>
+<select id="sort" onchange="sortTable()">
+    <option value="name">Name</option>
+    <option value="address">Address</option>
+</select>
+<table class="table" id="studentTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Registered At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listStudents)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.email</td>
+                <td>@item.phone</td>
+                <td>@item.address</td>
+                <td>@item.father_name</td>
+                <td>@item.mother_name</td>
+                <td>@item.registered_at</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Studentsdata/Edit?id=">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Studentsdata/Delete?id=">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    function sortTable() {
+        var select = document.getElementById("sort");
+        var sortBy = select.options[select.selectedIndex].value;
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("studentTable");
+        switching = true;
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[sortBy === "name" ? 1 : 4];
+                y = rows[i + 1].getElementsByTagName("TD")[sortBy === "name" ? 1 : 4];
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
