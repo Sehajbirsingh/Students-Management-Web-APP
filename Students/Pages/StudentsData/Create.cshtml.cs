@@ -21,11 +21,11 @@ namespace Students.Pages.StudentsData
             studentInfo.name = Request.Form["father_name"];
             studentInfo.name = Request.Form["mother_name"];
 
-            /*if (studentInfo.name.Length ==0 || studentInfo.email.Length ==0 || studentInfo.phone.Length == 0 || studentInfo.address.Length == 0 || studentInfo.father_name.Length == 0 || studentInfo.mother_name.Length == 0)
+            if (studentInfo.name.Length ==0 || studentInfo.email.Length ==0 || studentInfo.phone.Length == 0 || studentInfo.address.Length == 0 || studentInfo.father_name.Length == 0 || studentInfo.mother_name.Length == 0)
             {
                 errorMessage = "All the fields are required";
                 return;
-            }*/
+            }
 
             //save the new student into the database
             try
@@ -49,10 +49,10 @@ namespace Students.Pages.StudentsData
                     }
                 }             
             }
-            catch //(Exception ex)
+            catch (Exception ex)
             {
-                //errorMessage= ex.Message;
-                //return;
+                errorMessage= ex.Message;
+                return;
             }
 
             studentInfo.name = ""; studentInfo.email = ""; studentInfo.phone = ""; studentInfo.address = ""; studentInfo.father_name = ""; studentInfo.mother_name = "";
