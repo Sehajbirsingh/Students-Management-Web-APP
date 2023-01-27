@@ -2,7 +2,7 @@
 # Class students information Management 
 
 Here I created an asp.net core web
-application that aims to connects an sql
+application that aims to connect an sql
 server database and performs CRUD
 operation which means that the application allows 
 us to create new students to read the
